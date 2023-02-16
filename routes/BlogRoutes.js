@@ -33,7 +33,16 @@ const router = express.Router();
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Blog'
+ *               type: object
+ *               properties:
+ *                 status: 
+ *                   type: string
+ *                   example: success
+ *                 data:
+ *                      $ref: '#/components/schemas/Blog'
+ * 
+ *       500:
+ *         description: 	Internal Error
  *     security:
  *      - bearerAuth: []
  */
@@ -51,9 +60,17 @@ router.post("/", createBlog);
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Blog'
+ *               type: object
+ *               properties:
+ *                 status: 
+ *                   type: string
+ *                   example: success
+ *                 data:
+ *                   type: array
+ *                   items: 
+ *                      $ref: '#/components/schemas/Blog'
+ *       500:
+ *         description: 	Internal Error
  *     security:
  *      - bearerAuth: []
  */
@@ -72,8 +89,20 @@ router.get("/", getAllBlogs);
  *       200:
  *         content:
  *           application/json:
- *               items:
- *                 $ref: '#/components/schemas/Blog'
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status: 
+ *                   type: string
+ *                   example: success
+ *                 data:
+ *                      $ref: '#/components/schemas/Blog'
+ * 
+ *       404:
+ *         description: 	Blog Not Found
+ * 
+ *       500:
+ *         description: 	Internal Error
  *     security:
  *      - bearerAuth: []
  */
@@ -99,7 +128,20 @@ router.get("/:id", getBlogById);
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Blog'
+ *               type: object
+ *               properties:
+ *                 status: 
+ *                   type: string
+ *                   example: success
+ *                 data:
+ *                      $ref: '#/components/schemas/Blog'
+ * 
+ *       404:
+ *         description: 	Blog Not Found
+ * 
+ *       500:
+ *         description: 	Internal Error
+ * 
  *     security:
  *      - bearerAuth: []
  */
@@ -116,7 +158,23 @@ router.put("/:id", updateBlog);
  *        name: id
  *     responses:
  *       200:
- *         description: Blog deleted sucessfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: success
+ *                 msg:
+ *                   type: string
+ *                   example: Blog deleted successfuly 
+ * 
+ *       404:
+ *         description: 	Blog Not Found
+ * 
+ *       500:
+ *         description: 	Internal Error
  *     security:
  *      - bearerAuth: []
  */

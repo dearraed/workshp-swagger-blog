@@ -34,11 +34,14 @@
  *       properties:
  *         title:
  *           type: string
+ *           example: blog med raed
  *           description: ID of the stadium
  *         body:
  *           type: string
  *           description: Location of the match
+ *           example: blog <body/>
  *         image:
  *           type: string
  *           description: The match participants
+ *           example: link of image
  */

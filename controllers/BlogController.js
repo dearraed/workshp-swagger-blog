@@ -21,7 +21,11 @@ exports.createBlog = async (req, res) => {
 exports.getBlogById = async (req, res) => {
   try {
     const blog = await blogService.getBlogById(req.params.id);
-    res.json({ data: blog, status: "success" });
+    if(blog){
+      res.json({ data: blog, status: "success" });
+    }else{
+      res.status(404).json({ msg: "Blog not found", status: "fail" });
+    }
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -30,7 +34,11 @@ exports.getBlogById = async (req, res) => {
 exports.updateBlog = async (req, res) => {
   try {
     const blog = await blogService.updateBlog(req.params.id, req.body);
-    res.json({ data: blog, status: "success" });
+    if(blog){
+      res.json({ data: blog, status: "success" });
+    }else{
+      res.status(404).json({ msg: "Blog not found", status: "fail" });
+    }
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

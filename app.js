@@ -45,9 +45,11 @@ const options = {
   apis: ["./routes/*.js", "./routes/schemas/*.js"],
 };
 
-const specs = swaggerJsDoc(options);
+if(process.env.NODE_ENV == "development"){
+    const specs = swaggerJsDoc(options);
+    app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+}
 
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 let PORT = process.env.PORT;
 app.listen(PORT, () => {
