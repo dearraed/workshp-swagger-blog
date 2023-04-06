@@ -18,7 +18,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /:
+ * /blogs:
  *   post:
  *     summary: create blog
  *     tags: [Blogs]
@@ -51,7 +51,7 @@ router.post("/", createBlog);
 
 /**
  * @swagger
- * /:
+ * /blogs:
  *   get:
  *     summary: get all blogs
  *     tags: [Blogs]
@@ -78,7 +78,7 @@ router.get("/", getAllBlogs);
 
 /**
  * @swagger
- * /{id}:
+ * /blogs/{id}:
  *   get:
  *     summary: get blog by id
  *     tags: [Blogs]
@@ -110,7 +110,7 @@ router.get("/:id", getBlogById);
 
 /**
  * @swagger
- * /{id}:
+ * /blogs/{id}:
  *   put:
  *     summary: Update blog by id
  *     tags: [Blogs]
@@ -149,7 +149,7 @@ router.put("/:id", updateBlog);
 
 /**
  * @swagger
- * /{id}:
+ * /blogs/{id}:
  *   delete:
  *     summary: delete blog by id
  *     tags: [Blogs]
